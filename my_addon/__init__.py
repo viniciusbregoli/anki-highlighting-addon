@@ -18,7 +18,7 @@ def add_input_field(html: str, card, context) -> str:
             html
             + """
             <div style='text-align: center; margin-top: 20px;'>
-                <textarea id='highlight_words_input' placeholder='Words to color...' style='width: 80%; height: 80px;'></textarea>
+                <textarea id='highlight_words_input' placeholder='Type your answer here...' style='width: 80%; height: 80px;'></textarea>
             </div>
         """
         )

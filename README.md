@@ -15,6 +15,8 @@ This Anki add-on enhances the study process by allowing you to dynamically color
 3.  Click "Show Answer".
 4.  The add-on will find and color all occurrences of your specified text in the card's answer.
 
+![demo](./demo.gif)
+
 ## Installation
 
 1.  Go to `Tools` > `Add-ons` > `View Files` in Anki to open the add-ons folder.
