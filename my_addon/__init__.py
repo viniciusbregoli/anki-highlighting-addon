@@ -52,6 +52,17 @@ def add_input_field(html: str, card, context) -> str:
             <div style='text-align: center; margin-top: 20px;'>
                 <textarea id='highlight_words_input' placeholder='Type your answer here...' style='width: 80%; height: 80px;'></textarea>
             </div>
+            <script>
+                var textarea = document.getElementById('highlight_words_input');
+                if (textarea) {
+                    textarea.addEventListener('keydown', function(event) {
+                        if (event.ctrlKey && event.key === 'Enter') {
+                            event.preventDefault();
+                            pycmd('ans');
+                        }
+                    });
+                }
+            </script>
         """
         )
     return html
