@@ -5,9 +5,41 @@ from anki.hooks import wrap
 from bs4 import BeautifulSoup
 import re
 
-# We're going to add a menu item below. First we want to create a function to
-# be called when the menu item is activated.
-
+STOP_WORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "but",
+    "by",
+    "for",
+    "if",
+    "in",
+    "into",
+    "is",
+    "it",
+    "no",
+    "not",
+    "of",
+    "on",
+    "or",
+    "such",
+    "that",
+    "the",
+    "their",
+    "then",
+    "there",
+    "these",
+    "they",
+    "this",
+    "to",
+    "was",
+    "will",
+    "with",
+}
 
 highlight_text = ""
 
@@ -35,12 +67,22 @@ def store_and_show_answer(text: str, reviewer: Reviewer) -> None:
 def highlight_words_in_answer(html: str, card, context) -> str:
     if context == "reviewAnswer" and highlight_text:
         soup = BeautifulSoup(html, "html.parser")
-        words = highlight_text.split()
-        if not words:
+
+        # Clean the input by removing punctuation
+        cleaned_text = re.sub(r"[^\w\s]", " ", highlight_text)
+
+        # Split into words and filter out stop words
+        all_words = cleaned_text.strip().split()
+        words_to_highlight = [
+            word for word in all_words if word.lower() not in STOP_WORDS
+        ]
+
+        if not words_to_highlight:
             return html
 
         pattern = re.compile(
-            r"(" + "|".join(re.escape(word) for word in words) + r")", re.IGNORECASE
+            r"(" + "|".join(re.escape(word) for word in words_to_highlight) + r")",
+            re.IGNORECASE,
         )
 
         for text_node in soup.find_all(text=True):

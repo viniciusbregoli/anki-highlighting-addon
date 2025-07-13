@@ -7,13 +7,14 @@ This Anki add-on enhances the study process by allowing you to dynamically color
 -   **On-the-fly Highlighting**: A text area is displayed on the question side of your cards.
 -   **Text Coloring**: Enter any words or phrases into the text area. When you reveal the answer, any matching text will be colored red.
 -   **Case-Insensitive & Substring Matching**: The matching is case-insensitive and supports partial matches (e.g., typing "proto" will color "protocol").
+-   **Stop Word Filtering**: Common English words (e.g., "the", "a", "is") are automatically ignored to prevent accidental highlighting.
 
 ## How to Use
 
 1.  When studying a card, you will see a text area below the question.
 2.  Type the text you want to find in the answer into this box. You can enter multiple words separated by spaces.
 3.  Click "Show Answer".
-4.  The add-on will find and color all occurrences of your specified text in the card's answer.
+4.  The add-on will find and color all occurrences of your specified text in the card's answer, excluding common words.
 
 ![demo](./demo.gif)
 
